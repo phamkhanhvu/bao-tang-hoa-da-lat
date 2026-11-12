@@ -6,260 +6,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css">
 <title>Kho ký ức</title>
-<meta name="description" content="Kho ký ức: hiện vật và tư liệu về năm làng hoa và Festival Hoa Đà Lạt, đang trong quá trình số hóa.">
-<style>
-/* Layout: editorial museum page. Forest green bands, warm paper sections,
-   burgundy for actions and active states, gold hairlines. */
-:root {
-  --bg: #F3ECDD;
-  --surface: #FBF7EE;
-  --fg: #2A2620;
-  --muted: #6E6557;
-  --forest: #1D2E22;
-  --forest-2: #2B4232;
-  --on-forest: #F1E8D4;
-  --on-forest-muted: #B9C2AE;
-  --maroon: #6A1D23;
-  --gold: #B8924A;
-  --line: rgba(42, 38, 32, 0.16);
-  color-scheme: light;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font: 16px/1.65 "Be Vietnam Pro", system-ui, sans-serif;
-  padding-left: max(0px, env(safe-area-inset-left, 0px));
-  padding-right: max(0px, env(safe-area-inset-right, 0px));
-}
-h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; line-height: 1.1; margin: 0; text-wrap: balance; }
-p { margin: 0; }
-a { color: inherit; }
-img { max-width: 100%; display: block; }
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
-.wrap {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-.eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--maroon);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.eyebrow::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: 0.35; }
-.section { padding-block: 72px; scroll-margin-top: 80px; }
-.section-head { display: grid; gap: 14px; margin-bottom: 36px; }
-.section-head h2 { font-size: clamp(34px, 5vw, 54px); color: var(--forest); }
-.section-head p { color: var(--muted); max-width: 60ch; }
-.note { font-size: 13px; color: var(--muted); font-style: italic; }
-
-/* Header */
-.site-header {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 20;
-  background: var(--forest);
-  color: var(--on-forest);
-  border-bottom: 1px solid rgba(184, 146, 74, 0.35);
-}
-.site-header .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 68px;
-  position: relative;
-}
-.brand { font-family: "Cormorant Garamond", serif; font-size: 20px; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; line-height: 1.1; }
-.nav { display: flex; gap: 22px; }
-.nav a { text-decoration: none; font-size: 14px; color: var(--on-forest-muted); padding: 6px 0; border-bottom: 2px solid transparent; white-space: nowrap; }
-.nav a:hover, .nav a[aria-current="true"] { color: var(--on-forest); border-bottom-color: var(--gold); }
-.menu-btn {
-  display: none;
-  background: none;
-  border: 1px solid rgba(184, 146, 74, 0.6);
-  color: var(--on-forest);
-  padding: 8px 12px;
-  font: inherit;
-  cursor: pointer;
-}
-@media (max-width: 1000px) {
-  .menu-btn { display: block; }
-  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--forest); padding: 8px max(16px, env(safe-area-inset-left, 0px)); border-top: 1px solid rgba(184,146,74,.35); }
-  .nav.open { display: flex; }
-  .nav a { padding: 12px 0; border-bottom: 1px solid rgba(241,232,212,.08); }
-}
-
-/* Hero */
-.hero { background: var(--forest); color: var(--on-forest); position: relative; overflow: hidden; }
-.hero::before {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 80% 30%, rgba(184,146,74,.22), transparent 55%),
-    repeating-linear-gradient(90deg, rgba(241,232,212,.035) 0 2px, transparent 2px 60px);
-  pointer-events: none;
-}
-.hero .wrap { position: relative; display: grid; gap: 40px; padding-block: 88px 96px; grid-template-columns: 1.1fr 0.9fr; align-items: end; }
-.hero h1 { font-size: clamp(48px, 8vw, 96px); color: var(--on-forest); letter-spacing: -0.01em; margin-top: 18px; }
-.hero .lede { font-size: 18px; color: var(--on-forest-muted); max-width: 48ch; margin-top: 22px; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-.btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 14px 22px; font: 600 13px "Be Vietnam Pro", sans-serif;
-  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
-  border: 1px solid var(--gold); background: transparent; color: inherit;
-}
-.btn-primary { background: var(--maroon); border-color: var(--maroon); color: #F7EEDC; }
-.btn-primary:hover { background: #7E2630; }
-.btn-ghost:hover { background: rgba(184,146,74,.12); }
-.hero-plate { margin: 0; background: var(--forest-2); border: 1px solid rgba(184,146,74,.45); padding: 14px; }
-.hero-plate img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.hero-plate figcaption { font-size: 12px; color: var(--on-forest-muted); margin-top: 10px; }
-@media (max-width: 900px) {
-  .hero .wrap { grid-template-columns: 1fr; padding-block: 56px 64px; }
-  .hero-plate { display: none; }
-}
-
-/* Villages */
-.villages { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--line); background: var(--surface); }
-.village { padding: 26px 22px; border-left: 1px solid var(--line); display: grid; gap: 10px; align-content: start; min-width: 0; }
-.village:first-child { border-left: 0; }
-.village .year { font: 600 15px "Be Vietnam Pro", sans-serif; color: var(--maroon); letter-spacing: 0.08em; }
-.village h3 { font-size: 26px; color: var(--forest); }
-.village p { font-size: 15px; color: var(--muted); }
-@media (max-width: 1000px) {
-  .villages { grid-template-columns: 1fr 1fr; }
-  .village:nth-child(odd) { border-left: 0; }
-  .village { border-top: 1px solid var(--line); }
-}
-@media (max-width: 560px) { .villages { grid-template-columns: 1fr; } .village { border-left: 0; } }
-
-/* Timeline */
-.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
-.timeline li { padding: 0 18px 0 0; position: relative; min-width: 0; }
-.timeline li::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 1px; background: var(--line); }
-.timeline li::after { content: ""; position: absolute; left: 0; top: 2px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 1px solid var(--maroon); }
-.timeline time { display: block; padding-top: 40px; font: 600 34px "Cormorant Garamond", serif; color: var(--maroon); }
-.timeline h3 { font: 600 20px "Cormorant Garamond", serif; margin-top: 8px; color: var(--forest); }
-.timeline p { font-size: 14px; color: var(--muted); margin-top: 6px; }
-@media (max-width: 900px) { .timeline { grid-template-columns: 1fr 1fr; row-gap: 36px; } }
-@media (max-width: 480px) { .timeline { grid-template-columns: 1fr; } }
-
-/* Story split */
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.split figure { margin: 0; background: var(--surface); padding: 14px; border: 1px solid var(--line); }
-.split figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.split figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
-.split p.lead { font-size: 18px; color: var(--fg); }
-@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
-
-/* Gardeners */
-.gardeners { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.gardeners li { background: var(--surface); border: 1px solid var(--line); padding: 18px 22px; display: grid; grid-template-columns: 170px 1fr; gap: 18px; align-items: baseline; }
-.gardeners strong { font: 600 22px "Cormorant Garamond", serif; color: var(--forest); }
-.gardeners span { color: var(--muted); }
-@media (max-width: 620px) { .gardeners li { grid-template-columns: 1fr; gap: 6px; } }
-
-/* Stages */
-.stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-.stage { background: var(--surface); border: 1px solid var(--line); padding: 24px; display: grid; gap: 10px; align-content: start; }
-.stage .n { font: 600 36px "Cormorant Garamond", serif; color: var(--gold); }
-.stage h3 { font-size: 24px; color: var(--forest); }
-.stage p { font-size: 15px; color: var(--muted); }
-@media (max-width: 900px) { .stages { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .stages { grid-template-columns: 1fr; } }
-
-/* Collection */
-.collection { background: var(--surface); border-block: 1px solid var(--line); }
-.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
-.chip {
-  font: 500 14px "Be Vietnam Pro", sans-serif; padding: 9px 16px; cursor: pointer;
-  background: transparent; border: 1px solid var(--line); color: var(--fg);
-}
-.chip[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
-.object-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.object { border: 1px solid var(--line); background: var(--bg); padding: 20px; display: grid; gap: 10px; align-content: start; }
-.object[hidden] { display: none; }
-.object .slot {
-  aspect-ratio: 4 / 3; background: repeating-linear-gradient(45deg, rgba(42,38,32,.04) 0 10px, transparent 10px 20px);
-  border: 1px dashed var(--line); display: grid; place-items: center; font-size: 13px; color: var(--muted);
-}
-.object .village-tag { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon); }
-.object h3 { font-size: 24px; color: var(--forest); }
-.object p { font-size: 15px; color: var(--muted); }
-@media (max-width: 900px) { .object-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .object-grid { grid-template-columns: 1fr; } }
-
-/* Visit */
-.visit { background: var(--forest); color: var(--on-forest); }
-.visit .section-head h2 { color: var(--on-forest); }
-.visit .section-head p { color: var(--on-forest-muted); }
-.visit-card { border: 1px solid rgba(184,146,74,.4); padding: 26px; max-width: 640px; display: grid; gap: 10px; }
-.visit-card h3 { font-size: 26px; color: var(--on-forest); }
-.visit-card p { font-size: 15px; color: var(--on-forest-muted); }
-
-footer { background: #15231A; color: var(--on-forest-muted); font-size: 14px; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-block: 34px; }
-footer strong { color: var(--on-forest); font-family: "Cormorant Garamond", serif; font-size: 20px; font-weight: 600; }
-
-/* Article pages */
-.page-hero { background: var(--forest); color: var(--on-forest); }
-.page-hero .wrap { padding-block: 64px 72px; display: grid; gap: 18px; max-width: 900px; }
-.page-hero h1 { font-size: clamp(44px, 7vw, 80px); color: var(--on-forest); }
-.page-hero .lede { font-size: 18px; color: var(--on-forest-muted); max-width: 60ch; }
-.crumbs { font-size: 13px; color: var(--on-forest-muted); }
-.crumbs a { text-decoration: none; }
-.crumbs a:hover { text-decoration: underline; }
-.prose { max-width: 70ch; display: grid; gap: 18px; }
-.prose p { font-size: 17px; }
-.prose h3 { font-size: 30px; color: var(--forest); margin-top: 10px; }
-.block { padding-block: 60px; }
-.block.alt { background: var(--surface); border-block: 1px solid var(--line); }
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-.card { background: var(--surface); border: 1px solid var(--line); padding: 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.card h3 { font-size: 26px; color: var(--forest); }
-.card p { color: var(--muted); font-size: 15px; }
-.card .tag { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon); }
-.card a { color: var(--maroon); font-weight: 600; text-decoration: none; font-size: 14px; }
-.card a:hover { text-decoration: underline; }
-.step { border-left: 2px solid var(--gold); padding: 6px 0 6px 20px; display: grid; gap: 6px; }
-.step time { font: 600 26px "Cormorant Garamond", serif; color: var(--maroon); }
-.step p { color: var(--muted); font-size: 15px; }
-.verify { background: #F7F0E0; border: 1px dashed var(--gold); padding: 20px 22px; font-size: 14px; color: var(--muted); }
-.verify strong { color: var(--forest); }
-.verify ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 4px; }
-.pending { font-style: italic; color: var(--muted); }
-.quote { border-left: 3px solid var(--maroon); padding: 4px 0 4px 20px; font: 500 22px/1.4 "Cormorant Garamond", serif; color: var(--forest); max-width: 40ch; }
-.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
-.chip { font: 500 14px "Be Vietnam Pro", sans-serif; padding: 9px 16px; cursor: pointer; background: transparent; border: 1px solid var(--line); color: var(--fg); }
-.chip[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
-.item[hidden] { display: none; }
-.slot { aspect-ratio: 4 / 3; background: repeating-linear-gradient(45deg, rgba(42,38,32,.04) 0 10px, transparent 10px 20px); border: 1px dashed var(--line); display: grid; place-items: center; font-size: 13px; color: var(--muted); }
-.cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
-.btn-dark { display: inline-flex; padding: 14px 22px; font: 600 13px "Be Vietnam Pro", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; background: var(--maroon); color: #F7EEDC; border: 1px solid var(--maroon); }
-.btn-dark:hover { background: #7E2630; }
-.btn-line { display: inline-flex; padding: 14px 22px; font: 600 13px "Be Vietnam Pro", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--forest); color: var(--forest); }
-.btn-line:hover { background: rgba(29,46,34,.06); }
-.fest { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding-block: 22px; border-top: 1px solid var(--line); }
-.fest:first-child { border-top: 0; }
-.fest .yr { font: 600 34px "Cormorant Garamond", serif; color: var(--maroon); }
-.fest h3 { font-size: 24px; color: var(--forest); }
-.fest p { color: var(--muted); font-size: 15px; margin-top: 6px; }
-.fest .facts { font-size: 14px; color: var(--muted); margin-top: 6px; }
-.sub-h { font: 600 13px "Be Vietnam Pro", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--maroon); margin-bottom: 10px; }
-@media (max-width: 860px) { .two { grid-template-columns: 1fr; } .fest { grid-template-columns: 1fr; gap: 6px; } }
-
-</style>
+<meta name="description" content="Kho ký ức: hiện vật và tư liệu về năm làng hoa và Festival Hoa Đà Lạt.">
 
 <header class="site-header">
   <div class="wrap">
@@ -276,12 +23,31 @@ footer strong { color: var(--on-forest); font-family: "Cormorant Garamond", seri
   <div class="wrap">
     <p class="crumbs"><a href="index.html">Trang chủ</a> / Kho ký ức</p>
     <p class="eyebrow" style="color: var(--gold)">Kho ký ức</p>
-    <h1>Hiện vật trưng bày</h1>
-    <p class="lede">Các hiện vật được đề xuất trong đề cương, phân theo làng hoa. Ảnh hiện vật đang chờ chụp.</p>
+    <h1>Kho ký ức</h1>
+    <p class="lede">Hiện vật và tư liệu về năm làng hoa, Festival Hoa và đời sống người trồng hoa.</p>
   </div>
 </section>
-<section class="block"><div class="wrap"><div class="section-head"><p class="eyebrow">Kho ký ức</p><h2>Hiện vật theo làng hoa</h2></div><p class="pending" style="margin-bottom:22px">Hiện vật được phân theo làng hoa vì đề cương ghi theo làng. Tám bộ sưu tập trong đề cương sẽ được rà soát khi đủ hiện vật.</p><div class="filters" role="group" aria-label="Lọc hiện vật"><button class="chip" aria-pressed="true" data-filter="all">Tất cả</button><button class="chip" aria-pressed="false" data-filter="ha-dong">Hà Đông</button><button class="chip" aria-pressed="false" data-filter="thai-phien">Thái Phiên</button><button class="chip" aria-pressed="false" data-filter="van-thanh">Vạn Thành</button><button class="chip" aria-pressed="false" data-filter="xuan-tho">Xuân Thọ</button><button class="chip" aria-pressed="false" data-filter="da-thien">Đa Thiện</button><button class="chip" aria-pressed="false" data-filter="festival">Festival Hoa</button></div><div class="two"><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><div class="slot">Ảnh chờ chụp</div><h3>Bản phục chế khế ước cấp đất 1938</h3><p>Lồng kính bảo quản.</p></article><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><div class="slot">Ảnh chờ chụp</div><h3>Bình tưới nước thiếc gò tay</h3><p>Biểu tượng người làm vườn xưa.</p></article><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><div class="slot">Ảnh chờ chụp</div><h3>Rương gỗ và trang phục</h3><p>Đi cùng người ra đi năm xưa.</p></article><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><div class="slot">Ảnh chờ chụp</div><h3>Bộ nông cụ rèn thủ công</h3><p>Cuốc chim, cào, xẻng.</p></article><article class="card item" data-cat="thai-phien"><span class="tag">Thái Phiên</span><div class="slot">Ảnh chờ chụp</div><h3>Sổ ghi ngày công và sổ nợ phân bón</h3><p>Giấy tờ ố vàng.</p></article><article class="card item" data-cat="thai-phien"><span class="tag">Thái Phiên</span><div class="slot">Ảnh chờ chụp</div><h3>Bóng đèn sợi đốt và cầu dao gốm</h3><p>Thắp đèn cho hoa cúc những năm 90.</p></article><article class="card item" data-cat="van-thanh"><span class="tag">Vạn Thành</span><div class="slot">Ảnh chờ chụp</div><h3>Đôi thùng gánh nước bằng tôn thiếc</h3><p>Hàn vá nhiều chỗ.</p></article><article class="card item" data-cat="van-thanh"><span class="tag">Vạn Thành</span><div class="slot">Ảnh chờ chụp</div><h3>Bộ dụng cụ ghép cành</h3><p>Dao nhíp và chén thuốc ghép.</p></article><article class="card item" data-cat="xuan-tho"><span class="tag">Xuân Thọ</span><div class="slot">Ảnh chờ chụp</div><h3>Đèn măng-xông hoặc đèn dầu cũ</h3><p>Đời sống những năm đầu.</p></article><article class="card item" data-cat="xuan-tho"><span class="tag">Xuân Thọ</span><div class="slot">Ảnh chờ chụp</div><h3>Sổ ghi chép thu chi bán hoa</h3><p>Ghi chép từ thời kỳ đầu.</p></article><article class="card item" data-cat="da-thien"><span class="tag">Đa Thiện</span><div class="slot">Ảnh chờ chụp</div><h3>Chiếc gùi tre hoặc mây</h3><p>Đeo lưng khi làm vườn.</p></article><article class="card item" data-cat="da-thien"><span class="tag">Đa Thiện</span><div class="slot">Ảnh chờ chụp</div><h3>Lọ thủy tinh hạt giống cẩm chướng</h3><p>Hạt giống thời kỳ đầu.</p></article><article class="card item" data-cat="festival"><span class="tag">Festival Hoa</span><div class="slot">Ảnh chờ chụp</div><h3>Bản phác thảo logo đầu tiên</h3><p>Tay vẽ của họa sĩ Nguyễn Phúc.</p></article><article class="card item" data-cat="festival"><span class="tag">Festival Hoa</span><div class="slot">Ảnh chờ chụp</div><h3>Thiệp cưới từ đám cưới hoa 2007</h3><p>Một trong 114 tấm thiệp.</p></article></div></div></section><section class="block alt"><div class="wrap"><div class="section-head"><p class="eyebrow">Đóng góp</p><h2>Gửi ký ức</h2></div><div class="wrap"><div class="prose"><p>Nếu bạn có hiện vật, tư liệu hoặc câu chuyện về nghề trồng hoa Đà Lạt, bảo tàng mong được tiếp nhận. Thông tin liên hệ và cách gửi sẽ được bổ sung.</p></div></div></div></section>
-<section class="block"><div class="wrap"><div class="verify"><strong>Cần kiểm chứng trước khi công bố</strong><ul><li>Ảnh của mọi hiện vật hiện là khung chờ, cần chụp thật.</li><li>Các hiện vật cần ghi rõ niên đại dự kiến, chất liệu và tình trạng bản gốc hay phục chế.</li><li>Đoạn thuyết minh ‘QR giọng đọc’ trong đề cương chưa có tệp âm thanh.</li></ul></div></div></section>
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Hiện vật trưng bày</p>
+      <h2>Hiện vật theo làng hoa</h2>
+      <p>Hiện vật được phân theo làng hoa, như đề cương đã ghi. Các ảnh minh họa đang được thay bằng ảnh chụp thật.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Lọc hiện vật theo làng"><button class="chip" aria-pressed="true" data-filter="all">Tất cả</button><button class="chip" aria-pressed="false" data-filter="ha-dong">Hà Đông</button><button class="chip" aria-pressed="false" data-filter="thai-phien">Thái Phiên</button><button class="chip" aria-pressed="false" data-filter="van-thanh">Vạn Thành</button><button class="chip" aria-pressed="false" data-filter="xuan-tho">Xuân Thọ</button><button class="chip" aria-pressed="false" data-filter="da-thien">Đa Thiện</button><button class="chip" aria-pressed="false" data-filter="festival">Festival Hoa</button></div>
+    <div class="object-grid"><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><img src="img/obj-can.jpg" alt="Bình tưới nước thiếc gò tay"><h3>Bình tưới nước thiếc gò tay</h3><p>Biểu tượng của người làm vườn xưa.</p></article><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><img src="img/obj-notebook.jpg" alt="Bản phục chế khế ước cấp đất 1938"><h3>Bản phục chế khế ước cấp đất 1938</h3><p>Trưng bày trong lồng kính bảo quản.</p></article><article class="card item" data-cat="ha-dong"><span class="tag">Hà Đông</span><img src="img/obj-crate.jpg" alt="Rương gỗ và trang phục"><h3>Rương gỗ và trang phục</h3><p>Đi cùng người ra đi năm xưa.</p></article><article class="card item" data-cat="thai-phien"><span class="tag">Thái Phiên</span><img src="img/obj-tin.jpg" alt="Hộp hạt giống hoa cúc Đà Lạt"><h3>Hộp hạt giống hoa cúc Đà Lạt</h3><p>Hộp hạt giống thời kỳ phát triển cúc.</p></article><article class="card item" data-cat="thai-phien"><span class="tag">Thái Phiên</span><img src="img/obj-notebook.jpg" alt="Sổ ghi ngày công và sổ nợ phân bón"><h3>Sổ ghi ngày công và sổ nợ phân bón</h3><p>Giấy tờ ố vàng theo thời gian.</p></article><article class="card item" data-cat="thai-phien"><span class="tag">Thái Phiên</span><div class="slot">Ảnh chờ chụp</div><h3>Bóng đèn sợi đốt kiểu cũ</h3><p>Thắp đèn đêm cho hoa cúc những năm 90.</p></article><article class="card item" data-cat="van-thanh"><span class="tag">Vạn Thành</span><div class="slot">Ảnh chờ chụp</div><h3>Đôi thùng gánh nước bằng tôn thiếc</h3><p>Hàn vá nhiều chỗ, đi kèm đòn gánh tre.</p></article><article class="card item" data-cat="van-thanh"><span class="tag">Vạn Thành</span><img src="img/obj-shears.jpg" alt="Bộ dụng cụ ghép cành"><h3>Bộ dụng cụ ghép cành</h3><p>Nghệ thuật ghép cành trên sườn đồi.</p></article><article class="card item" data-cat="xuan-tho"><span class="tag">Xuân Thọ</span><div class="slot">Ảnh chờ chụp</div><h3>Đèn măng-xông hoặc đèn dầu cũ</h3><p>Đời sống những năm đầu lập làng.</p></article><article class="card item" data-cat="xuan-tho"><span class="tag">Xuân Thọ</span><img src="img/obj-notebook.jpg" alt="Sổ ghi chép thu chi bán hoa"><h3>Sổ ghi chép thu chi bán hoa</h3><p>Ghi chép từ thời kỳ đầu.</p></article><article class="card item" data-cat="da-thien"><span class="tag">Đa Thiện</span><div class="slot">Ảnh chờ chụp</div><h3>Chiếc gùi tre hoặc mây</h3><p>Đeo lưng khi làm vườn.</p></article><article class="card item" data-cat="da-thien"><span class="tag">Đa Thiện</span><div class="slot">Ảnh chờ chụp</div><h3>Lọ thủy tinh hạt giống cẩm chướng</h3><p>Hạt giống thời kỳ đầu.</p></article><article class="card item" data-cat="festival"><span class="tag">Festival Hoa</span><div class="slot">Ảnh chờ chụp</div><h3>Bản phác thảo logo đầu tiên</h3><p>Tay vẽ của họa sĩ Nguyễn Phúc.</p></article><article class="card item" data-cat="festival"><span class="tag">Festival Hoa</span><div class="slot">Ảnh chờ chụp</div><h3>Thiệp cưới từ đám cưới hoa 2007</h3><p>Một trong 114 tấm thiệp.</p></article></div>
+  </div>
+</section>
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Gửi ký ức</p>
+      <h2>Đóng góp hiện vật</h2>
+      <p>Nếu bạn có hiện vật, tư liệu hoặc câu chuyện về nghề trồng hoa Đà Lạt, bảo tàng mong được tiếp nhận. Thông tin liên hệ và cách gửi sẽ được bổ sung.</p>
+    </div>
+  </div>
+</section>
+<section class="block"><div class="wrap"><div class="verify"><strong>Cần kiểm chứng trước khi công bố</strong><ul><li>Ảnh có ‘ảnh minh họa’ được cắt từ mockup, cần thay bằng ảnh chụp hiện vật thật.</li><li>Các hiện vật còn lại hiện là khung chờ ảnh, cần ghi niên đại dự kiến, chất liệu và tình trạng bản gốc hay phục chế.</li><li>Đoạn ‘QR giọng đọc’ trong đề cương chưa có tệp âm thanh.</li></ul></div></div></section>
 </main>
 
 <footer>
