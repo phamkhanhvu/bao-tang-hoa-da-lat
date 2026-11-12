@@ -1,9 +1,12 @@
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
 <title>Bảo tàng Hoa Đà Lạt</title>
+<meta name="description" content="Bảo tàng Hoa Đà Lạt: lịch sử nghề trồng hoa qua năm làng hoa Hà Đông, Thái Phiên, Vạn Thành, Xuân Thọ và Đa Thiện.">
 <style>
 /* Layout: editorial museum page. Forest green bands, warm paper sections,
    burgundy for actions and active states, gold hairlines. */
@@ -208,222 +211,83 @@ img { max-width: 100%; display: block; }
 footer { background: #15231A; color: var(--on-forest-muted); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-block: 34px; }
 footer strong { color: var(--on-forest); font-family: "Cormorant Garamond", serif; font-size: 20px; font-weight: 600; }
+
+/* Article pages */
+.page-hero { background: var(--forest); color: var(--on-forest); }
+.page-hero .wrap { padding-block: 64px 72px; display: grid; gap: 18px; max-width: 900px; }
+.page-hero h1 { font-size: clamp(44px, 7vw, 80px); color: var(--on-forest); }
+.page-hero .lede { font-size: 18px; color: var(--on-forest-muted); max-width: 60ch; }
+.crumbs { font-size: 13px; color: var(--on-forest-muted); }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+.prose { max-width: 70ch; display: grid; gap: 18px; }
+.prose p { font-size: 17px; }
+.prose h3 { font-size: 30px; color: var(--forest); margin-top: 10px; }
+.block { padding-block: 60px; }
+.block.alt { background: var(--surface); border-block: 1px solid var(--line); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { font-size: 26px; color: var(--forest); }
+.card p { color: var(--muted); font-size: 15px; }
+.card .tag { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon); }
+.card a { color: var(--maroon); font-weight: 600; text-decoration: none; font-size: 14px; }
+.card a:hover { text-decoration: underline; }
+.step { border-left: 2px solid var(--gold); padding: 6px 0 6px 20px; display: grid; gap: 6px; }
+.step time { font: 600 26px "Cormorant Garamond", serif; color: var(--maroon); }
+.step p { color: var(--muted); font-size: 15px; }
+.verify { background: #F7F0E0; border: 1px dashed var(--gold); padding: 20px 22px; font-size: 14px; color: var(--muted); }
+.verify strong { color: var(--forest); }
+.verify ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 4px; }
+.pending { font-style: italic; color: var(--muted); }
+.quote { border-left: 3px solid var(--maroon); padding: 4px 0 4px 20px; font: 500 22px/1.4 "Cormorant Garamond", serif; color: var(--forest); max-width: 40ch; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.chip { font: 500 14px "Be Vietnam Pro", sans-serif; padding: 9px 16px; cursor: pointer; background: transparent; border: 1px solid var(--line); color: var(--fg); }
+.chip[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
+.item[hidden] { display: none; }
+.slot { aspect-ratio: 4 / 3; background: repeating-linear-gradient(45deg, rgba(42,38,32,.04) 0 10px, transparent 10px 20px); border: 1px dashed var(--line); display: grid; place-items: center; font-size: 13px; color: var(--muted); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+.btn-dark { display: inline-flex; padding: 14px 22px; font: 600 13px "Be Vietnam Pro", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; background: var(--maroon); color: #F7EEDC; border: 1px solid var(--maroon); }
+.btn-dark:hover { background: #7E2630; }
+.btn-line { display: inline-flex; padding: 14px 22px; font: 600 13px "Be Vietnam Pro", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--forest); color: var(--forest); }
+.btn-line:hover { background: rgba(29,46,34,.06); }
+.fest { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding-block: 22px; border-top: 1px solid var(--line); }
+.fest:first-child { border-top: 0; }
+.fest .yr { font: 600 34px "Cormorant Garamond", serif; color: var(--maroon); }
+.fest h3 { font-size: 24px; color: var(--forest); }
+.fest p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.fest .facts { font-size: 14px; color: var(--muted); margin-top: 6px; }
+.sub-h { font: 600 13px "Be Vietnam Pro", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--maroon); margin-bottom: 10px; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } .fest { grid-template-columns: 1fr; gap: 6px; } }
+
 </style>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top">Bảo tàng Hoa Đà Lạt</a>
+    <a class="brand" href="index.html">Bảo tàng Hoa Đà Lạt</a>
     <nav class="nav" id="nav" aria-label="Điều hướng chính">
-      <a href="#top" aria-current="true">Trang chủ</a>
-      <a href="#hat-giong">Hạt giống ký ức</a>
-      <a href="#lang-hoa">Năm làng hoa</a>
-      <a href="#gieo-mam">Những người gieo mầm</a>
-      <a href="#cong-nghe">Từ đôi bàn tay đến công nghệ</a>
-      <a href="#kho-ky-uc">Kho ký ức</a>
+      <a href="index.html" aria-current="true">Trang chủ</a><a href="hat-giong.html">Hạt giống ký ức</a><a href="index.html#lang-hoa">Năm làng hoa</a><a href="gieo-mam.html">Những người gieo mầm</a><a href="cong-nghe.html">Từ đôi bàn tay đến công nghệ</a><a href="festival.html">Festival Hoa</a><a href="kho-ky-uc.html">Kho ký ức</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
   </div>
 </header>
 
 <main id="top">
-
-<section class="hero">
+<section class="page-hero">
   <div class="wrap">
-    <div>
-      <p class="eyebrow" style="color: var(--gold)">Bảo tàng Hoa Đà Lạt</p>
-      <h1>Nơi ký ức nở thành hoa</h1>
-      <p class="lede">Lịch sử nghề trồng hoa Đà Lạt qua năm làng hoa: Hà Đông, Thái Phiên, Vạn Thành, Xuân Thọ và Đa Thiện.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#hat-giong">Bắt đầu từ hạt giống →</a>
-        <a class="btn btn-ghost" href="#lang-hoa">Năm làng hoa</a>
-      </div>
-    </div>
-    <figure class="hero-plate">
-      <img src="old-man.jpg" alt="Người trồng hoa Đà Lạt trong nhà kính">
-      <figcaption>Ảnh minh họa, chưa phải tư liệu thật</figcaption>
-    </figure>
+    
+    <p class="eyebrow" style="color: var(--gold)">Bảo tàng Hoa Đà Lạt</p>
+    <h1>Nơi ký ức nở thành hoa</h1>
+    <p class="lede">Lịch sử nghề trồng hoa Đà Lạt qua năm làng hoa: Hà Đông, Thái Phiên, Vạn Thành, Xuân Thọ và Đa Thiện.</p>
   </div>
 </section>
-
-<section class="section" id="hat-giong">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Hạt giống ký ức</p>
-      <h2>Hành trình lan tỏa và tiếp nối</h2>
-      <p>Lịch sử của năm làng hoa là một dòng chảy liên tục: thế hệ trước gieo, thế hệ sau tiếp nối.</p>
-    </div>
-    <ol class="timeline">
-      <li><time>1938</time><h3>Hà Đông</h3><p>Các gia đình từ ven Hồ Tây lập ấp Hà Đông, ban đầu khai hoang và trồng rau tiếp tế.</p></li>
-      <li><time>1954</time><h3>Xuân Thọ</h3><p>50 hộ từ miền Trung đến lập nghiệp, bắt đầu chuyển sang trồng hoa.</p></li>
-      <li><time>1956</time><h3>Thái Phiên</h3><p>Nông dân từ các tỉnh miền Trung dựng lán, lập ấp và đặt tên theo nhà yêu nước Thái Phiên.</p></li>
-      <li><time>1956</time><h3>Đa Thiện</h3><p>55 người tiên phong từ ấp Hà Đông bắt đầu khai hoang vùng thung lũng.</p></li>
-      <li><time>~1960</time><h3>Vạn Thành</h3><p>Các gia đình di dân từ châu thổ sông Hồng lập ấp trên sườn đồi phía Tây Đà Lạt.</p></li>
-    </ol>
-    <p class="note" style="margin-top: 28px">Mốc năm 1965 của Xuân Thọ và các số liệu chi tiết đang được kiểm tra thêm.</p>
-  </div>
-</section>
-
-<section class="section" id="lang-hoa" style="background: var(--surface); border-block: 1px solid var(--line)">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Năm làng hoa</p>
-      <h2>Mỗi làng một bản sắc</h2>
-    </div>
-    <div class="villages">
-      <article class="village">
-        <span class="year">1938</span>
-        <h3>Hà Đông</h3>
-        <p>Cái nôi của nghề hoa và dấu chân mở cõi.</p>
-      </article>
-      <article class="village">
-        <span class="year">1956</span>
-        <h3>Thái Phiên</h3>
-        <p>Thủ phủ hoa cúc và những đêm thắp đèn.</p>
-      </article>
-      <article class="village">
-        <span class="year">~1960</span>
-        <h3>Vạn Thành</h3>
-        <p>Vương quốc hoa hồng và nghệ thuật ghép cành.</p>
-      </article>
-      <article class="village">
-        <span class="year">1954</span>
-        <h3>Xuân Thọ</h3>
-        <p>Vựa lay-ơn của cao nguyên.</p>
-      </article>
-      <article class="village">
-        <span class="year">1956</span>
-        <h3>Đa Thiện</h3>
-        <p>Thủ phủ hoa chất lượng cao.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="gieo-mam">
-  <div class="wrap split">
-    <div>
-      <div class="section-head" style="margin-bottom: 26px">
-        <p class="eyebrow">Những người gieo mầm</p>
-        <h2>Con người làm nên hoa</h2>
-        <p class="lead">Tôn vinh những người trồng hoa qua nhiều thế hệ, từ bàn tay đầu tiên khai đất đến những người nối nghề hôm nay.</p>
-      </div>
-      <ul class="gardeners">
-        <li><strong>Hà Đông</strong><span>Hào hoa và tỉ mẩn chốn Kinh kỳ</span></li>
-        <li><strong>Thái Phiên</strong><span>Khát vọng đổi đời và những đêm trắng thắp đèn</span></li>
-        <li><strong>Vạn Thành</strong><span>Đôi tay tài hoa và lòng can đảm trên sườn dốc</span></li>
-        <li><strong>Xuân Thọ</strong><span>Tâm hồn lãng mạn và sự nhạy bén thời cuộc</span></li>
-        <li><strong>Đa Thiện</strong><span>Cởi mở và tinh thần giao hòa quần tụ</span></li>
-      </ul>
-    </div>
-    <figure>
-      <img src="greenhouse.jpg" alt="Luống hoa và nhà kính Đà Lạt">
-      <figcaption>Ảnh minh họa, chưa phải tư liệu thật</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="section" id="cong-nghe" style="background: var(--surface); border-block: 1px solid var(--line)">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Từ đôi bàn tay đến công nghệ</p>
-      <h2>Bốn giai đoạn của nghề trồng hoa</h2>
-      <p>Từ canh tác phụ thuộc thời tiết đến người nông dân trở thành kỹ sư nông nghiệp.</p>
-    </div>
-    <div class="stages">
-      <article class="stage"><span class="n">I</span><h3>Canh tác truyền thống</h3><p>Phụ thuộc hoàn toàn vào thời tiết.</p></article>
-      <article class="stage"><span class="n">II</span><h3>Nhà lồng và đèn</h3><p>Nhà lồng tre, nilon và kỹ thuật thắp đèn.</p></article>
-      <article class="stage"><span class="n">III</span><h3>Nhà kính</h3><p>Nhà kính, tưới nhỏ giọt, cảm biến và giống mới.</p></article>
-      <article class="stage"><span class="n">IV</span><h3>Kỹ sư nông nghiệp</h3><p>Người nông dân trở thành kỹ sư nông nghiệp.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="section collection" id="kho-ky-uc">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Kho ký ức</p>
-      <h2>Hiện vật trưng bày</h2>
-      <p>Lọc theo làng để xem các hiện vật đã được đề xuất. Ảnh hiện vật đang chờ chụp.</p>
-    </div>
-    <div class="filters" role="group" aria-label="Lọc hiện vật theo làng">
-      <button class="chip" aria-pressed="true" data-filter="all">Tất cả</button>
-      <button class="chip" aria-pressed="false" data-filter="ha-dong">Hà Đông</button>
-      <button class="chip" aria-pressed="false" data-filter="thai-phien">Thái Phiên</button>
-      <button class="chip" aria-pressed="false" data-filter="van-thanh">Vạn Thành</button>
-      <button class="chip" aria-pressed="false" data-filter="xuan-tho">Xuân Thọ</button>
-      <button class="chip" aria-pressed="false" data-filter="da-thien">Đa Thiện</button>
-    </div>
-    <div class="object-grid" id="objects">
-      <article class="object" data-cat="ha-dong">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Hà Đông</span>
-        <h3>Bản phục chế khế ước cấp đất năm 1938</h3>
-        <p>Trưng bày trong lồng kính bảo quản.</p>
-      </article>
-      <article class="object" data-cat="ha-dong">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Hà Đông</span>
-        <h3>Bình tưới nước thiếc gò tay</h3>
-        <p>Biểu tượng của người làm vườn xưa.</p>
-      </article>
-      <article class="object" data-cat="thai-phien">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Thái Phiên</span>
-        <h3>Sổ ghi chép ngày công và sổ nợ phân bón</h3>
-        <p>Giấy tờ ố vàng theo thời gian.</p>
-      </article>
-      <article class="object" data-cat="thai-phien">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Thái Phiên</span>
-        <h3>Bóng đèn sợi đốt kiểu cũ</h3>
-        <p>Dùng để thắp sáng cho hoa cúc.</p>
-      </article>
-      <article class="object" data-cat="van-thanh">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Vạn Thành</span>
-        <h3>Đôi thùng gánh nước bằng tôn thiếc</h3>
-        <p>Hàn vá nhiều chỗ, đi kèm đòn gánh tre.</p>
-      </article>
-      <article class="object" data-cat="van-thanh">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Vạn Thành</span>
-        <h3>Bộ dụng cụ ghép cành</h3>
-        <p>Nghệ thuật ghép cành trên sườn đồi.</p>
-      </article>
-      <article class="object" data-cat="xuan-tho">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Xuân Thọ</span>
-        <h3>Đèn măng-xông hoặc đèn dầu cũ</h3>
-        <p>Thuộc đời sống những năm đầu lập làng.</p>
-      </article>
-      <article class="object" data-cat="da-thien">
-        <div class="slot">Ảnh hiện vật chờ chụp</div>
-        <span class="village-tag">Đa Thiện</span>
-        <h3>Chiếc gùi tre hoặc mây</h3>
-        <p>Đeo lưng khi đi làm vườn.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section visit" id="tham-quan">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow" style="color: var(--gold)">Thông tin tham quan</p>
-      <h2>Ghé thăm bảo tàng</h2>
-    </div>
-    <div class="visit-card">
-      <h3>Đang cập nhật</h3>
-      <p>Giờ mở cửa, địa chỉ và thông tin liên hệ sẽ được bổ sung khi có xác nhận.</p>
-    </div>
-  </div>
-</section>
+<section class="block"><div class="wrap"><div class="section-head"><p class="eyebrow">Lịch sử</p><h2>Năm làng hoa</h2></div><div class="two" id="lang-hoa"><a class="card" href="ha-dong.html" style="text-decoration:none"><span class="tag">1938</span><h3>Hà Đông</h3><p>Cái nôi của nghề hoa và dấu chân mở cõi.</p></a><a class="card" href="thai-phien.html" style="text-decoration:none"><span class="tag">1956</span><h3>Thái Phiên</h3><p>Thủ phủ hoa cúc và những đêm thắp đèn.</p></a><a class="card" href="van-thanh.html" style="text-decoration:none"><span class="tag">Khoảng 1960</span><h3>Vạn Thành</h3><p>Vương quốc hoa hồng và nghệ thuật ghép cành.</p></a><a class="card" href="xuan-tho.html" style="text-decoration:none"><span class="tag">1954</span><h3>Xuân Thọ</h3><p>Vựa lay-ơn của cao nguyên.</p></a><a class="card" href="da-thien.html" style="text-decoration:none"><span class="tag">1956</span><h3>Đa Thiện</h3><p>Thủ phủ hoa chất lượng cao.</p></a></div></div></section><section class="block alt"><div class="wrap"><div class="section-head"><p class="eyebrow">Khám phá</p><h2>Bắt đầu từ đâu?</h2></div><div class="two"><a class="card" href="hat-giong.html" style="text-decoration:none"><span class="tag">Hạt giống ký ức</span><h3>Một dòng chảy liên tục</h3><p>Năm làng hoa lan tỏa và tiếp nối nhau từ năm 1938.</p></a><a class="card" href="gieo-mam.html" style="text-decoration:none"><span class="tag">Những người gieo mầm</span><h3>Con người làm nên hoa</h3><p>Năm tính cách của người trồng hoa qua nhiều thế hệ.</p></a><a class="card" href="cong-nghe.html" style="text-decoration:none"><span class="tag">Từ đôi bàn tay đến công nghệ</span><h3>Bốn giai đoạn</h3><p>Từ canh tác phụ thuộc thời tiết đến kỹ sư nông nghiệp.</p></a><a class="card" href="festival.html" style="text-decoration:none"><span class="tag">Festival Hoa</span><h3>Hành trình từ 2005</h3><p>Các kỳ Festival từ Sắc hoa Đà Lạt đến kỳ XI năm 2026.</p></a><a class="card" href="kho-ky-uc.html" style="text-decoration:none"><span class="tag">Kho ký ức</span><h3>Hiện vật và tư liệu</h3><p>Hiện vật được trưng bày theo từng làng hoa.</p></a></div></div></section>
 
 </main>
 
 <footer>
   <div class="wrap">
     <div><strong>Bảo tàng Hoa Đà Lạt</strong><br>Nơi ký ức nở thành hoa.</div>
+    <div>Thông tin tham quan và liên hệ đang được cập nhật.</div>
   </div>
 </footer>
 
@@ -434,29 +298,13 @@ footer strong { color: var(--on-forest); font-family: "Cormorant Garamond", seri
     const open = nav.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', String(open));
   });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }));
-
   document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const f = chip.dataset.filter;
       document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
-      document.querySelectorAll('#objects .object').forEach(o => {
+      document.querySelectorAll('.item').forEach(o => {
         o.hidden = !(f === 'all' || o.dataset.cat === f);
       });
     });
   });
-
-  const links = [...nav.querySelectorAll('a')];
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (en.isIntersecting) {
-        links.forEach(l => l.setAttribute('aria-current', String(l.getAttribute('href') === '#' + en.target.id)));
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  sections.forEach(s => io.observe(s));
 </script>
